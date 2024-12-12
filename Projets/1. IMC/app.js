@@ -19,28 +19,50 @@ const result = document.querySelector('.result');
 // Ajout des evt
 form.addEventListener('submit', handleSubmit);
 
+// Fonction du submit
 function handleSubmit(e) {
     e.preventDefault();
+    calculateBMI();
+}
 
-    // Récupération des données
+// Fonction de calcul d'IMC
+function calculateBMI() {
+    // Récupération des valeurs des inputs
     const height = heightInput.value / 100;
     const weight = weightInput.value;
 
+    // Gestion des erreurs
+    if (!height || !weight || height <= 0 || weight <= 0) {
+        handleError();
+        return;
+    }
     // Calcul de l'IMC
     const imc = Number((weight / (height * height)).toFixed(1));
-    // console.log(`Taille: ${height} m, Poids: ${weight} kg`, imc);
+    // console.log(imc);
 
-    // Si pas de données
-    if (!height || !weight || imc === '') {
-        result.style.color = 'red';
-        result.textContent = 'Veuillez remplir les champs';
-        imc = 0;
-    } else {
-        bmiValue.textContent = imc;
-        result.style.color = 'black';
+    showResult(imc);
+}
 
-        result.innerHTML = `
-          Votre indice d'IMC est de : <span>${imc}</span>
-        `;
-    }
+// Affichage des erreurs
+function handleError() {
+    bmiValue.textContent = 'Wops !';
+    bmiValue.style.color = 'inherit';
+    result.textContent = "Merci d'indiquer votre taille et votre poids";
+    result.style.color = 'inherit';
+}
+
+// Affichage des résultats
+function showResult(imc) {
+    const rank = BMIData.find((data) => {
+        if (imc >= data.range[0] && imc < data.range[1]) return data;
+        else if (typeof data.range === 'number' && imc > data.range)
+            return data;
+    });
+
+    // IMC
+    bmiValue.textContent = imc;
+    bmiValue.style.color = `${rank.color}`;
+
+    // Résultat
+    result.textContent = `Résultat : ${rank.name}`;
 }
