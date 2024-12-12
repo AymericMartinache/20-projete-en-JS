@@ -1,21 +1,58 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calcul IMC</title>
-    <link rel="stylesheet" href="./style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Calcul IMC</title>
+        <link rel="stylesheet" href="./style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <h1>Calcul d'<span>IMC</span></h1>
 
-    
-    <script src="app.js"></script>
-  </body>
+            <!-- Formulaire -->
+            <form>
+                <div class="inputs-container">
+                    <div class="input-group">
+                        <label for="height">Votre taille (en cm)</label>
+                        <input
+                            id="height"
+                            type="number"
+                            min="0"
+                            max="300"
+                            placeholder="Votre taille en centimètre"
+                            class="height-input"
+                        />
+                    </div>
+                    <div class="input-group">
+                        <label for="weight">Votre poids (en kg)</label>
+                        <input
+                            id="weight"
+                            type="number"
+                            min="0"
+                            max="300"
+                            placeholder="Votre poids en kg"
+                            class="weight-input"
+                        />
+                    </div>
+                </div>
+                <button>Calculer l'IMC</button>
+            </form>
+
+            <!-- Résultat -->
+            <div class="info">
+                <p class="bmi-value">0</p>
+                <p class="result">En attente du résultat...</p>
+            </div>
+        </div>
+
+        <script src="app.js"></script>
+    </body>
 </html>
