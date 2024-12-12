@@ -81,12 +81,12 @@ form button:hover {
 }
 
 .bmi-value {
-    font-size: 4.5rem;
-    font-weight: 700;
+    font-size: 4rem;
+    font-weight: 500;
 }
 
 .result {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 200;
     font-family: Raleway, sans-serif;
 }
