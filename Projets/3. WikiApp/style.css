@@ -49,14 +49,16 @@ input {
 
 .error-msg {
     text-align: center;
-    color: #454545;
+    color: #9b9b9b;
+    margin: 20px 0;
 }
 
-.result-display {
-    max-width: 600px;
-    margin: 70px auto;
+.results-display {
+    max-width: 700px;
+    margin: 50px auto;
 }
 
+/* LOADER */
 .loader {
     display: none;
     justify-content: center;
@@ -84,14 +86,18 @@ input {
     }
 }
 
+/* CARDS */
 .result-item {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    border-radius: 10px;
 }
 .result-title {
     font-size: 22px;
 }
 .result-snippet {
-    font-size: 15px;
+    font-size: 16px;
     color: #444;
 }
 .result-link {
@@ -99,4 +105,5 @@ input {
     text-decoration: none;
     display: block;
     overflow-wrap: break-word;
+    margin: 5px 0;
 }
