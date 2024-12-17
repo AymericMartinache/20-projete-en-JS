@@ -7,12 +7,15 @@ form.addEventListener('submit', handleSubmit);
 function handleSubmit(e) {
     e.preventDefault();
 
+    // Création d'un tableau de résultats
     const results = [];
 
+    // Récupération des réponses cochées
     const radioButtons = document.querySelectorAll(
         "input[type='radio']:checked"
     );
 
+    // Comparaison des réponses avec le tableau "responses"
     radioButtons.forEach((radioButton, index) => {
         if (radioButton.value === responses[index]) {
             results.push(true);
@@ -30,12 +33,13 @@ const markResult = document.querySelector('.mark');
 const helpResult = document.querySelector('.help');
 
 function showResults(results) {
+    // Récupération du nombre d'erreurs
     const errorsNumber = results.filter((el) => el === false).length;
-
     console.log(errorsNumber);
+
     switch (errorsNumber) {
         case 0:
-            titleResult.textContent = `✔️ Bravo, c'est un sans faute ! ✔️`;
+            titleResult.textContent = `✅ Bravo, c'est un sans faute ! ✅`;
             helpResult.textContent = 'Quelle culture ...';
             helpResult.style.display = 'block';
             markResult.innerHTML = 'Score : <span>5 / 5</span>';
@@ -103,6 +107,7 @@ function addColors(results) {
 
 const radioInputs = document.querySelectorAll("input[type='radio']");
 
+// Reset de la couleur au changement de réponse
 radioInputs.forEach((radioInput) =>
     radioInput.addEventListener('input', resetColor)
 );
