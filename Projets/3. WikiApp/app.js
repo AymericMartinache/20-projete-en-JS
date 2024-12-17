@@ -67,7 +67,7 @@ function createCards(data) {
         card.className = 'result-item';
         card.innerHTML = `
             <h3 class="result-title">
-                <a href="${url}" targe="_blank">${element.title} </a>
+                <a href="${url}" target="_blank">${element.title} </a>
             </h3>
 
             <a href="${url}" class="result-link" target="_blank">${url}</a>
