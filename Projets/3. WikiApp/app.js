@@ -29,7 +29,7 @@ function handleSubmit(evt) {
 async function wikiAPICall(searchInput) {
     try {
         const response = await fetch(
-            `https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&origin=*&srlimit=20&srsearch=${searchInput}`
+            `https://fr.wikipedia.org/w/api.php?action=query&list=search&format=json&origin=*&srlimit=20&srsearch=${searchInput}`
         );
         if (!response.ok) {
             throw new Error(`${response.status}`);
