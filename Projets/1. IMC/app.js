@@ -7,25 +7,25 @@ const BMIData = [
     { name: 'Obésité morbide', color: 'purple', range: 40 },
 ];
 
-// IMC = poids en kg / taille² en m
+//? IMC = poids en kg / taille² en m
 
-// Séléction des éléments
+//* Séléction des éléments
 const form = document.querySelector('form');
 const heightInput = document.querySelector('#height');
 const weightInput = document.querySelector('#weight');
 const bmiValue = document.querySelector('.bmi-value');
 const result = document.querySelector('.result');
 
-// Ajout des evt
+//* Ajout des evt
 form.addEventListener('submit', handleSubmit);
 
-// Fonction du submit
+//* Fonction du submit
 function handleSubmit(e) {
     e.preventDefault();
     calculateBMI();
 }
 
-// Fonction de calcul d'IMC
+//* Fonction de calcul d'IMC
 function calculateBMI() {
     // Récupération des valeurs des inputs
     const height = heightInput.value / 100;
@@ -43,7 +43,7 @@ function calculateBMI() {
     showResult(imc);
 }
 
-// Affichage des erreurs
+//* Affichage des erreurs
 function handleError() {
     bmiValue.textContent = 'Wops !';
     bmiValue.style.color = 'inherit';
@@ -51,10 +51,13 @@ function handleError() {
     result.style.color = 'inherit';
 }
 
-// Affichage des résultats
+//* Affichage des résultats
 function showResult(imc) {
+    // Recherche du rang en fonction de l'IMC
     const rank = BMIData.find((data) => {
+        // Si l'IMC est comprise dans data.range
         if (imc >= data.range[0] && imc < data.range[1]) return data;
+        // Gestion du dernier élément range du tableau BMIData qui n'est pas un tableau mais un nombre
         else if (typeof data.range === 'number' && imc > data.range)
             return data;
     });
