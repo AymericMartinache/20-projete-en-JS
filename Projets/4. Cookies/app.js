@@ -4,6 +4,9 @@ console.log('I am JS !');
 const cookieForm = document.querySelector('form');
 const inputs = document.querySelectorAll('input');
 const toastsContainer = document.querySelector('.toasts-container');
+const cookiesList = document.querySelector('.cookies-list');
+const displayCookiesBtn = document.querySelector('.display-cookie-btn');
+const infoTxt = document.querySelector('.info-txt');
 
 // Validation des champs
 inputs.forEach((input) => {
@@ -65,6 +68,10 @@ function createCookie(newCookie) {
     )}=${encodeURIComponent(
         newCookie.value
     )}; expires = ${newCookie.expire.toUTCString()}`;
+
+    if (cookiesList.children.length) {
+        displayCookies();
+    }
 }
 
 // On vérifie si le cookie existe
@@ -79,6 +86,7 @@ function doesCookieExist(name) {
     return cookiePresence;
 }
 
+// Affichage des toast
 function creatToast({ name, state, color }) {
     const toastInfo = document.createElement('p');
     toastInfo.className = 'toast';
@@ -90,4 +98,57 @@ function creatToast({ name, state, color }) {
     setTimeout(() => {
         toastInfo.remove();
     }, 2500);
+}
+
+// Affichage des cookies
+displayCookiesBtn.addEventListener('click', displayCookies);
+
+let lock = false;
+
+function displayCookies() {
+    if (cookiesList.children.length) cookiesList.textContent = '';
+
+    const cookies = document.cookie.replace(/\s/g, '').split(';').reverse();
+    // console.log(cookies);
+
+    if (!cookies[0]) {
+        if (lock) return;
+
+        lock = true;
+        infoTxt.textContent = 'Aucun cookie à afficher !';
+        setTimeout(() => {
+            infoTxt.textContent = '';
+            lock = false;
+        }, 3000);
+        return;
+    }
+
+    createElements(cookies);
+}
+
+function createElements(cookies) {
+    cookies.forEach((cookie) => {
+        const formatCookie = cookie.split('=');
+        const listItem = document.createElement('li');
+        const name = decodeURIComponent(formatCookie[0]);
+        listItem.innerHTML = `
+        <p>
+            <span>Nom : </span>${name}
+        </p>
+        <p>
+            <span>Valeur : </span>${decodeURIComponent(formatCookie[1])}
+        </p>
+        <button>x</button>
+        `;
+
+        listItem.querySelector('button').addEventListener('click', (e) => {
+            creatToast({ name, state: 'supprimé', color: 'crimson' });
+            document.cookie = `${encodeURIComponent(
+                formatCookie[0]
+            )}=; expires=${new Date(0).toUTCString()}`;
+
+            e.target.parentElement.remove();
+        });
+        cookiesList.appendChild(listItem);
+    });
 }
