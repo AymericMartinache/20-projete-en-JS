@@ -10,12 +10,13 @@ Ce projet va vous entraîner à utiliser une API, manipuler des données et adap
 <br>
 
 ### A. Coder une interface basique
+
 > Codez d'abord une interface très simple, contenant les éléments importants : boutons, inputs, liens, etc... <br>
-> Rajoutez un peu de style si besoin est. 
+> Rajoutez un peu de style si besoin est.
 > <br>
 > Puis codez les fonctionnalités JavaScript.
-> 
-<br>
+>
+> <br>
 
 ### B. Fonctionnalités JavaScript à coder pour ce projet
 
@@ -27,7 +28,6 @@ Ce projet va vous entraîner à utiliser une API, manipuler des données et adap
 6. Récupérez les données dont nous avons besoin : Nom de la ville, nom du pays, température et src de l'icône.
 7. Affichez-les.
 8. Implémentez un loader et gérez les erreurs possibles de l'appel vers l'API.
-
 
 <br>
 
