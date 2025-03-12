@@ -25,20 +25,35 @@ h1 {
     min-height: 300px;
     background-color: #fff;
     border: 1px solid #008fbe;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 4px 4px 15px #008fbe;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    position: relative;
 }
 
-.loader {
-    display: none;
+.loader-container {
+    background-color: #f1f1f1;
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 1s ease-out, opacity 1s ease-out;
 }
 
-.loader.active {
-    display: block;
+.loader-container.active {
+    visibility: visible;
+    opacity: 1;
 }
 
 .error-information {
@@ -70,7 +85,7 @@ h1 {
     font-weight: bold;
 }
 .country {
-    color: lightgray;
+    color: #606060;
 }
 
 .temperature {
@@ -78,20 +93,24 @@ h1 {
     width: 200px;
     padding: 10px;
     border-radius: 999px;
-    box-shadow: 1px 1px 5px #909090;
+    box-shadow: 1px 1px 5px #111;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     font-size: 2rem;
+    color: #212121;
 }
 
 .icon-container {
     width: 100px;
     height: 100px;
+    position: relative;
 }
 
-.icon-container .icon {
+.icon {
     width: 100%;
-    height: 100%;
-    border: 1px solid green;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

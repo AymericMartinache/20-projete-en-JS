@@ -16,9 +16,9 @@
     <body>
         <h1>How is the weather ?</h1>
 
-        <div class="container">
+        <main class="container">
             <!-- Loader -->
-            <div class="loader">
+            <div class="loader-container">
                 <img src="./ressources/loader.svg" alt="loader" />
             </div>
 
@@ -28,18 +28,19 @@
             <!-- Location -->
             <div class="container-item location active">
                 <div class="city">
-                    <p>Nantes</p>
+                    <p class="city-name">Nantes</p>
                 </div>
-                <div class="country"><p>France</p></div>
+                <div class="country"><p class="country-name">France</p></div>
             </div>
+
             <!-- Temperatures -->
             <div class="container-item temperature active">
                 <div class="icon-container">
                     <img class="icon" src="./ressources/browser.svg" alt="" />
                 </div>
-                <p>10 °C</p>
+                <p class="temperature-data"></p>
             </div>
-        </div>
+        </main>
 
         <script src="script.js"></script>
     </body>
